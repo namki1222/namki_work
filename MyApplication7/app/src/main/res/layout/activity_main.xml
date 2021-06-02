@@ -20,21 +20,6 @@
         android:orientation="vertical"
         android:layout_gravity="right" >
 
-        <com.google.android.material.navigation.NavigationView
-            android:id="@+id/nav_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="right"
-            android:fitsSystemWindows="true"
-            app:headerLayout="@layout/nav_header_main"
-            app:menu="@menu/menu_main" />
-
-
-        <TextView
-            android:layout_width="400dp"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="DRAWER"
-            android:background="#009688"/>
+            <include layout="@layout/nav_header_main"/>
     </LinearLayout>
 </androidx.drawerlayout.widget.DrawerLayout>

@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -23,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     private ImageView ivMenu;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
         ivMenu=findViewById(R.id.menu);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-
 
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
