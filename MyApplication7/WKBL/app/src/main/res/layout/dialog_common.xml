@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#80000000"
+    android:padding="40dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingLeft="27dp"
+            android:paddingTop="32dp"
+            android:paddingRight="27dp"
+            android:paddingBottom="32dp">
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/dlg_tv_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="#222222"
+                android:textSize="13dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/dlg_tv_done"
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#000000"
+                android:gravity="center"
+                android:text="@string/ok"
+                android:textColor="#ffffff"
+                android:textSize="14dp"
+                app:autoSizeMaxTextSize="14dp"
+                app:autoSizeMinTextSize="5dp"
+                app:autoSizeTextType="uniform" />
+
+
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

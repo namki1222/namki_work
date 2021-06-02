@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "517054435005",
+    "project_id": "wkbl-d2bfe",
+    "storage_bucket": "wkbl-d2bfe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:517054435005:android:79c065f1de4668a503b1d4",
+        "android_client_info": {
+          "package_name": "or.kr.wkbl"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "517054435005-nfq4t9nhkunf3vf2a1gf00gjq7u7rlub.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDwKZgSLHCHhxFEfAgYmdAvTnK-3Y1sU0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "517054435005-nfq4t9nhkunf3vf2a1gf00gjq7u7rlub.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

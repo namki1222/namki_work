@@ -1,0 +1,71 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion '29.0.2'
+    defaultConfig {
+        applicationId "or.kr.wkbl"
+        minSdkVersion 23
+        targetSdkVersion 29
+        versionCode 3
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    defaultConfig {
+        multiDexEnabled true
+    }
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE'
+    }
+    productFlavors {
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation "androidx.recyclerview:recyclerview:1.1.0"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation "androidx.coordinatorlayout:coordinatorlayout:1.1.0"
+    implementation 'com.android.support:multidex:1.0.3'
+
+    implementation files('libs/bolts-android-1.2.0.jar')
+    implementation files('libs/Parse-1.9.2.jar')
+    implementation files('libs/jackson-annotations-2.5.0.jar')
+    implementation files('libs/jackson-core-2.5.0.jar')
+    implementation files('libs/jackson-databind-2.3.1.jar')
+    implementation platform('com.google.firebase:firebase-bom:26.8.0')
+    implementation 'com.google.firebase:firebase-analytics'
+
+    // RXJava for Android Library
+    implementation 'io.reactivex:rxandroid:1.2.1'
+    implementation 'com.jakewharton.rxbinding:rxbinding:0.4.0'
+    implementation 'com.artemzin.rxjava:proguard-rules:1.2.1.0'
+
+
+    // Firebase Cloud Messaging (Java)
+    implementation 'com.google.firebase:firebase-messaging'
+    implementation 'android.arch.work:work-runtime:1.0.1'
+
+    // View Injection Library
+    implementation 'com.jakewharton:butterknife:10.2.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.0'
+}
