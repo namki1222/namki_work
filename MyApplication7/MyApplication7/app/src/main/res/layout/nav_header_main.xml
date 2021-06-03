@@ -201,7 +201,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginTop="20dp"
-                android:layout_marginBottom="30dp">
+                android:layout_marginBottom="80dp">
 
                 <LinearLayout
                 android:layout_width="wrap_content"
@@ -262,7 +262,7 @@
                 android:layout_height="wrap_content"
                 android:text="페이스북"
                 android:layout_gravity="center"
-                android:paddingLeft="20dp"
+                android:paddingLeft="10dp"
                 android:textColor="@android:color/black"/>
             <Space
                 android:layout_width="wrap_content"
@@ -277,7 +277,7 @@
                 android:layout_height="wrap_content"
                 android:text="유튜브"
                 android:layout_gravity="center"
-                android:paddingLeft="20dp"
+                android:paddingLeft="10dp"
                 android:textColor="@android:color/black"/>
         <Space
             android:layout_width="wrap_content"
@@ -297,8 +297,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="인스타그램"
-                android:layout_gravity="center"
-                android:paddingLeft="20dp"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="10dp"
                 android:textColor="@android:color/black"/>
             <Space
                 android:layout_width="wrap_content"
@@ -307,13 +307,14 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src='@drawable/icon_live2'/>
+                android:src='@drawable/icon_live2'
+                android:paddingLeft="5dp" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="네이버TV"
                 android:layout_gravity="center"
-                android:paddingLeft="20dp"
+                android:paddingLeft="10dp"
                 android:textColor="@android:color/black"/>
             <Space
                 android:layout_width="wrap_content"
@@ -335,7 +336,7 @@
                 android:layout_height="wrap_content"
                 android:text="네이버스포츠"
                 android:layout_gravity="center"
-                android:paddingLeft="20dp"
+                android:paddingLeft="10dp"
                 android:textColor="@android:color/black"/>
             <Space
                 android:layout_width="wrap_content"

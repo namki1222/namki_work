@@ -10,7 +10,8 @@
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/webView_main_id">
     <include layout="@layout/webview_main"/>
 </LinearLayout>
 
@@ -18,7 +19,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_gravity="right" >
+        android:layout_gravity="right"
+        android:id="@+id/menu_layout_id">
 
             <include layout="@layout/nav_header_main"/>
     </LinearLayout>

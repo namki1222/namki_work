@@ -3,26 +3,27 @@ package com.example.myapplication;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.content.Context;
 import android.os.Bundle;
+import android.text.Layout;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
-import android.webkit.WebView;
 import android.widget.ImageView;
-import android.widget.Toast;
-
-import com.google.android.material.navigation.NavigationView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "Main_Activity";
 
     private DrawerLayout mDrawerLayout;
-    private ImageView ivMenu;
+    private ImageView ivMenu,ivlogo,ivradio;
+    private TextView txregister;
+    LinearLayout infoLayout,menulayout;
+
+
 
 
 
@@ -30,23 +31,55 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        ivMenu=findViewById(R.id.menu);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        infoLayout = (LinearLayout)findViewById(R.id.webView_main_id);
+        menulayout = (LinearLayout)findViewById(R.id.menu_layout_id);
+
 
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowTitleEnabled(false); // 기존 title 지우기
 
 
-    ivMenu.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Log.d(TAG, "onClick: 클릭됨");
-            mDrawerLayout.openDrawer(Gravity.RIGHT);
-        }
-    });
+        ivMenu=findViewById(R.id.menu);
+        ivMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "onClick: 클릭됨");
+                mDrawerLayout.openDrawer(Gravity.RIGHT);
+            }
+        });
+        ivlogo=findViewById(R.id.logo);
+        ivlogo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "onClick: logo 클릭됨");
+            }
+        });
+        ivradio=findViewById(R.id.live);
+        ivradio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "onClick: live 클릭됨");
+            }
+        });
+        menulayout.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return true;
+            }
+        });
+        txregister=findViewById(R.id.register);
+        txregister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "onClick: 회원가입 클릭됨");
+            }
+        });
+
+
+
 
     }
 }
