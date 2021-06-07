@@ -1,30 +1,36 @@
 package com.example.myapplication;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.text.Layout;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "Main_Activity";
 
     private DrawerLayout mDrawerLayout;
-    private ImageView ivMenu,ivlogo,ivradio;
-    private TextView txregister;
-    LinearLayout infoLayout,menulayout;
+    private ImageView iv[] = new ImageView[3];
+    private TextView tv[] = new TextView[5];
+    private LinearLayout lv[] = new LinearLayout[17];
 
-
-
+    LinearLayout menulayout;
 
 
     @Override
@@ -33,53 +39,114 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        infoLayout = (LinearLayout)findViewById(R.id.webView_main_id);
-        menulayout = (LinearLayout)findViewById(R.id.menu_layout_id);
+        menulayout = (LinearLayout) findViewById(R.id.menu_layout_id);
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavi);
 
 
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowTitleEnabled(false); // 기존 title 지우기
 
+        View.OnClickListener onClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (v.getId()) {
+                    case R.id.imageview0:
+                        Log.d(TAG, "live: 클릭됨");
+                        // btn1 동작
+                        break;
+                    case R.id.imageview1:
+                        Log.d(TAG, "logo: 클릭됨");
+                        // btn2 동작
+                        break;
+                    case R.id.imageview2:
+                        Log.d(TAG, "menu: 클릭됨");
+                        mDrawerLayout.openDrawer(Gravity.RIGHT);
+                        break;
+                    case R.id.imageview3:
+                        Log.d(TAG, "register: 클릭됨");
+                        mDrawerLayout.closeDrawer(Gravity.RIGHT);
 
-        ivMenu=findViewById(R.id.menu);
-        ivMenu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG, "onClick: 클릭됨");
-                mDrawerLayout.openDrawer(Gravity.RIGHT);
+
+
+                        break;
+                    case R.id.imageview4:
+                        Log.d(TAG, "login: 클릭됨");
+                        mDrawerLayout.closeDrawer(Gravity.RIGHT);
+                        break;
+                    case R.id.imageview5:
+                        Log.d(TAG, "home: 클릭됨");
+                        mDrawerLayout.closeDrawer(Gravity.RIGHT);
+                        break;
+                    case R.id.imageview6:
+                        Log.d(TAG, "media: 클릭됨");
+                        mDrawerLayout.closeDrawer(Gravity.RIGHT);
+                        break;
+                    case R.id.imageview7:
+                        Log.d(TAG, "game: 클릭됨");
+                        mDrawerLayout.closeDrawer(Gravity.RIGHT);
+                        break;
+                    case R.id.imageview8:
+                        Log.d(TAG, "team: 클릭됨");
+                        mDrawerLayout.closeDrawer(Gravity.RIGHT);
+                        break;
+                    case R.id.imageview9:
+                        Log.d(TAG, "player: 클릭됨");
+                        mDrawerLayout.closeDrawer(Gravity.RIGHT);
+                        break;
+                    case R.id.imageview10:
+                        Log.d(TAG, "award: 클릭됨");
+                        mDrawerLayout.closeDrawer(Gravity.RIGHT);
+                        break;
+                    case R.id.imageview11:
+                        Log.d(TAG, "wkbl: 클릭됨");
+                        mDrawerLayout.closeDrawer(Gravity.RIGHT);
+                        break;
+                    case R.id.imageview12:
+                        Log.d(TAG, "페이스북: 클릭됨");
+                        mDrawerLayout.closeDrawer(Gravity.RIGHT);
+                        break;
+                    case R.id.imageview13:
+                        Log.d(TAG, "유튜브: 클릭됨");
+                        mDrawerLayout.closeDrawer(Gravity.RIGHT);
+                        break;
+                    case R.id.imageview14:
+                        Log.d(TAG, "인스타그램: 클릭됨");
+                        mDrawerLayout.closeDrawer(Gravity.RIGHT);
+                        break;
+                    case R.id.imageview15:
+                        Log.d(TAG, "네이버 티비: 클릭됨");
+                        mDrawerLayout.closeDrawer(Gravity.RIGHT);
+                        break;
+                    case R.id.imageview16:
+                        Log.d(TAG, "네이버 스포츠: 클릭됨");
+                        mDrawerLayout.closeDrawer(Gravity.RIGHT);
+                        break;
+                }
             }
-        });
-        ivlogo=findViewById(R.id.logo);
-        ivlogo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG, "onClick: logo 클릭됨");
+
+        };
+        for (int i = 0; i < 16; i++) {
+            int resID = getResources().getIdentifier("imageview" + i, "id",
+                    "com.example.myapplication");
+            if (i == 0 || i == 2 || i == 1) {
+                iv[i] = (ImageView) findViewById(resID);
+                iv[i].setOnClickListener(onClickListener);
+            } else if (i == 3 || i == 4) {
+                tv[i] = (TextView) findViewById(resID);
+                tv[i].setOnClickListener(onClickListener);
+            } else {
+                lv[i] = (LinearLayout) findViewById(resID);
+                lv[i].setOnClickListener(onClickListener);
             }
-        });
-        ivradio=findViewById(R.id.live);
-        ivradio.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG, "onClick: live 클릭됨");
-            }
-        });
+        }
         menulayout.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 return true;
             }
         });
-        txregister=findViewById(R.id.register);
-        txregister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG, "onClick: 회원가입 클릭됨");
-            }
-        });
-
-
-
-
     }
 }
+

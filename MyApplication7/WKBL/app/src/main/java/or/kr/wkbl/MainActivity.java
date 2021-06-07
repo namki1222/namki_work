@@ -20,6 +20,7 @@ import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.CookieManager;
 import android.webkit.CookieSyncManager;
@@ -30,6 +31,8 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
@@ -53,11 +56,14 @@ import static or.kr.wkbl.Activity.FlashActivity.EXTRA_URL;
 
 public class MainActivity extends AppCompatActivity {
 
-    private  String urlAddress = "http://115.68.54.33:8080/index.jsp";
+    private  String urlAddress = "http://115.68.54.33:8080/";
     private static final String TAG = "Main_Activity";
 
     private DrawerLayout mDrawerLayout;
-    private ImageView ivMenu,ivMenu2,ivMenu3;
+    private ImageView iv[] = new ImageView[3];
+    private TextView tv[] = new TextView[5];
+    private LinearLayout lv[] = new LinearLayout[17];
+    LinearLayout menulayout;
 
     @BindView(R.id.webView)
     WebView webView;
@@ -70,11 +76,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         initialize();
-        ivMenu=findViewById(R.id.menu);
-        ivMenu2=findViewById(R.id.live);
-        ivMenu3=findViewById(R.id.logo);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        menulayout = (LinearLayout) findViewById(R.id.menu_layout_id);
 
 
 
@@ -82,26 +86,120 @@ public class MainActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowTitleEnabled(false); // 기존 title 지우기
 
+        View.OnClickListener onClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (v.getId()) {
+                    case R.id.imageview0:
+                        android.util.Log.d(TAG, "live: 클릭됨");
+                        webView.loadUrl("https://m.sports.naver.com/basketball/schedule/index.nhn?category=wkbl");
+                        // btn1 동작
+                        break;
+                    case R.id.imageview1:
+                        android.util.Log.d(TAG, "logo: 클릭됨");
+                        webView.loadUrl(urlAddress);
+                        // btn2 동작
+                        break;
+                    case R.id.imageview2:
+                        android.util.Log.d(TAG, "menu: 클릭됨");
+                        mDrawerLayout.openDrawer(Gravity.RIGHT);
+                        break;
+                    case R.id.imageview3:
+                        android.util.Log.d(TAG, "register: 클릭됨");
+                        mDrawerLayout.closeDrawer(Gravity.RIGHT);
+                        break;
+                    case R.id.imageview4:
+                        android.util.Log.d(TAG, "login: 클릭됨");
+                        mDrawerLayout.closeDrawer(Gravity.RIGHT);
+                        break;
+                    case R.id.imageview5:
+                        android.util.Log.d(TAG, "home: 클릭됨");
+                        webView.loadUrl(urlAddress);
+                        mDrawerLayout.closeDrawer(Gravity.RIGHT);
+                        break;
+                    case R.id.imageview6:
+                        android.util.Log.d(TAG, "media: 클릭됨");
+                        webView.loadUrl(urlAddress+"teamstory/media_list.jsp");
+                        mDrawerLayout.closeDrawer(Gravity.RIGHT);
+                        break;
+                    case R.id.imageview7:
+                        android.util.Log.d(TAG, "game: 클릭됨");
+                        webView.loadUrl(urlAddress+"game/game_schedule.jsp");
+                        mDrawerLayout.closeDrawer(Gravity.RIGHT);
+                        break;
+                    case R.id.imageview8:
+                        android.util.Log.d(TAG, "team: 클릭됨");
+                        webView.loadUrl(urlAddress+"team/team_list.jsp");
+                        mDrawerLayout.closeDrawer(Gravity.RIGHT);
+                        break;
+                    case R.id.imageview9:
+                        android.util.Log.d(TAG, "player: 클릭됨");
+                        webView.loadUrl(urlAddress+"team/player_list.jsp");
+                        mDrawerLayout.closeDrawer(Gravity.RIGHT);
+                        break;
+                    case R.id.imageview10:
+                        android.util.Log.d(TAG, "award: 클릭됨");
+                        webView.loadUrl(urlAddress+"wkbl/award_league.jsp");
+                        mDrawerLayout.closeDrawer(Gravity.RIGHT);
+                        break;
+                    case R.id.imageview11:
+                        android.util.Log.d(TAG, "wkbl: 클릭됨");
+                        webView.loadUrl(urlAddress+"wkbl/wkbl_greeting.jsp");
+                        mDrawerLayout.closeDrawer(Gravity.RIGHT);
+                        break;
+                    case R.id.imageview12:
+                        android.util.Log.d(TAG, "페이스북: 클릭됨");
+                        webView.loadUrl("https://www.facebook.com/f.WKBL");
+                        mDrawerLayout.closeDrawer(Gravity.RIGHT);
+                        break;
+                    case R.id.imageview13:
+                        android.util.Log.d(TAG, "유튜브: 클릭됨");
+                        webView.loadUrl("https://www.youtube.com/c/%EC%97%AC%EB%86%8D%ED%8B%B0%EB%B9%84/featured");
+                        mDrawerLayout.closeDrawer(Gravity.RIGHT);
+                        break;
+                    case R.id.imageview14:
+                        android.util.Log.d(TAG, "인스타그램: 클릭됨");
+                        webView.loadUrl("https://www.instagram.com/wkbl_official/");
+                        mDrawerLayout.closeDrawer(Gravity.RIGHT);
+                        break;
+                    case R.id.imageview15:
+                        android.util.Log.d(TAG, "네이버 티비: 클릭됨");
+                        webView.loadUrl("https://tv.naver.com/wkbl");
+                        mDrawerLayout.closeDrawer(Gravity.RIGHT);
+                        break;
+                    case R.id.imageview16:
+                        android.util.Log.d(TAG, "네이버 스포츠: 클릭됨");
+                        webView.loadUrl("https://sports.news.naver.com/basketball/news/index.nhn?isphoto=N");
+                        mDrawerLayout.closeDrawer(Gravity.RIGHT);
+                        break;
+                }
+            }
 
-        ivMenu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                android.util.Log.d(TAG, "onClick: 클릭됨");
-                mDrawerLayout.openDrawer(Gravity.RIGHT);
+        };
+        for(int i=0; i<16; i++) {
+            int resID = getResources().getIdentifier("imageview" + i, "id",
+                    "or.kr.wkbl");
+            android.util.Log.d(TAG, resID + "여기끝!!"+i);
+            if(i == 0 || i == 2 || i ==1) {
+                iv[i] = (ImageView) findViewById(resID);
+                android.util.Log.d(TAG, resID + "여기끝!!!!"+i);
+                iv[i].setOnClickListener(onClickListener);
+                android.util.Log.d(TAG, resID + "여기끝!!!!!"+i);
+            }else if( i == 3|| i == 4){
+                android.util.Log.d(TAG, resID + "여기끝!!!!!!!!"+i);
+                tv[i] = (TextView)findViewById(resID);
+                tv[i].setOnClickListener(onClickListener);
+            }else{
+                lv[i] = (LinearLayout)findViewById(resID);
+                lv[i].setOnClickListener(onClickListener);
             }
-        });
-        ivMenu2.setOnClickListener(new View.OnClickListener() {
+        }
+
+
+        menulayout.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onClick(View v) {
-                android.util.Log.d(TAG, "onClick: 클릭됨");
-                webView.loadUrl("https://m.sports.naver.com/basketball/schedule/index.nhn?category=wkbl");
-            }
-        });
-        ivMenu3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                android.util.Log.d(TAG, "onClick: 클릭됨");
-                initialize();
+            public boolean onTouch(View v, MotionEvent event) {
+                return true;
             }
         });
 
@@ -171,7 +269,7 @@ public class MainActivity extends AppCompatActivity {
         if (getIntent() != null) {
             urlAddress = getIntent().getStringExtra(EXTRA_URL);
             if (TextUtils.isEmpty(urlAddress))
-                urlAddress = "http://115.68.54.33:8080/index.jsp";
+                urlAddress = "http://115.68.54.33:8080/";
         }
         webViewSetting(webView);
         webView.setWebViewClient(new WKBLWebViewClient(MainActivity.this, webView));
