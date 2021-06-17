@@ -62,6 +62,18 @@
         app:itemIconTint="#000000"
         app:itemTextColor="#000000"
         app:menu="@menu/navigation"/>
+
+
+    <WebView
+        android:id="@+id/webView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottomNavi"
+        android:layout_below="@+id/toolbar"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:visibility="visible" />
+
     <FrameLayout
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
@@ -71,4 +83,6 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:visibility="visible" />
+
+
 </RelativeLayout>

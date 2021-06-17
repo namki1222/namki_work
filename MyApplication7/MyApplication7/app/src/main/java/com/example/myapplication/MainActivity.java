@@ -16,6 +16,7 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -31,6 +32,9 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayout lv[] = new LinearLayout[17];
 
     LinearLayout menulayout;
+    private boolean isFragmentB = true ;
+
+
 
 
     @Override
@@ -40,8 +44,8 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         menulayout = (LinearLayout) findViewById(R.id.menu_layout_id);
-
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavi);
+
 
 
         setSupportActionBar(toolbar);
@@ -67,12 +71,17 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.imageview3:
                         Log.d(TAG, "register: 클릭됨");
                         mDrawerLayout.closeDrawer(Gravity.RIGHT);
-
-
-
+                        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                        FragmentB fragmentB = new FragmentB();
+                        transaction.replace(R.id.frameLayout,fragmentB);
+                        transaction.commit();
                         break;
                     case R.id.imageview4:
                         Log.d(TAG, "login: 클릭됨");
+                        FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
+                        FragmentC fragmentC = new FragmentC();
+                        transaction1.replace(R.id.frameLayout,fragmentC);
+                        transaction1.commit();
                         mDrawerLayout.closeDrawer(Gravity.RIGHT);
                         break;
                     case R.id.imageview5:
@@ -133,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
             if (i == 0 || i == 2 || i == 1) {
                 iv[i] = (ImageView) findViewById(resID);
                 iv[i].setOnClickListener(onClickListener);
-            } else if (i == 3 || i == 4) {
+            } else if (i == 3 || i == 4){
                 tv[i] = (TextView) findViewById(resID);
                 tv[i].setOnClickListener(onClickListener);
             } else {

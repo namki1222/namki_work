@@ -39,6 +39,9 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import java.net.URISyntaxException;
 import java.util.List;
@@ -46,6 +49,8 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import or.kr.wkbl.Util.ClientType;
+import or.kr.wkbl.Util.FragmentB;
+import or.kr.wkbl.Util.FragmentC;
 import or.kr.wkbl.Util.Log;
 import or.kr.wkbl.Util.PreferenceUtil;
 import or.kr.wkbl.Util.WKBLWebChromeClient;
@@ -59,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
     private  String urlAddress = "http://115.68.54.33:8080/";
     private static final String TAG = "Main_Activity";
 
+    private boolean isFragmentB = true ;
     private DrawerLayout mDrawerLayout;
     private ImageView iv[] = new ImageView[3];
     private TextView tv[] = new TextView[5];
@@ -67,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.webView)
     WebView webView;
+
 
 
     @Override
@@ -79,6 +86,11 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         menulayout = (LinearLayout) findViewById(R.id.menu_layout_id);
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.frameLayout);
+        FragmentC fragmentC = new FragmentC();
+        FragmentB fragmentB = new FragmentB();
+
+
 
 
 
@@ -106,15 +118,25 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.imageview3:
                         android.util.Log.d(TAG, "register: 클릭됨");
+                        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.frameLayout,fragmentB);
+                        transaction.commit();
                         mDrawerLayout.closeDrawer(Gravity.RIGHT);
                         break;
                     case R.id.imageview4:
+                        FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
                         android.util.Log.d(TAG, "login: 클릭됨");
+                        transaction1.replace(R.id.frameLayout,fragmentC);
+                        transaction1.commit();
                         mDrawerLayout.closeDrawer(Gravity.RIGHT);
                         break;
                     case R.id.imageview5:
-                        android.util.Log.d(TAG, "home: 클릭됨");
                         webView.loadUrl(urlAddress);
+                        FragmentTransaction transaction2 = getSupportFragmentManager().beginTransaction();
+                        android.util.Log.d(TAG, "home: 클릭됨");
+                        transaction2.remove(fragmentC);
+                        transaction2.remove(fragmentB);
+                        transaction2.commit();
                         mDrawerLayout.closeDrawer(Gravity.RIGHT);
                         break;
                     case R.id.imageview6:
@@ -179,14 +201,10 @@ public class MainActivity extends AppCompatActivity {
         for(int i=0; i<16; i++) {
             int resID = getResources().getIdentifier("imageview" + i, "id",
                     "or.kr.wkbl");
-            android.util.Log.d(TAG, resID + "여기끝!!"+i);
             if(i == 0 || i == 2 || i ==1) {
                 iv[i] = (ImageView) findViewById(resID);
-                android.util.Log.d(TAG, resID + "여기끝!!!!"+i);
                 iv[i].setOnClickListener(onClickListener);
-                android.util.Log.d(TAG, resID + "여기끝!!!!!"+i);
             }else if( i == 3|| i == 4){
-                android.util.Log.d(TAG, resID + "여기끝!!!!!!!!"+i);
                 tv[i] = (TextView)findViewById(resID);
                 tv[i].setOnClickListener(onClickListener);
             }else{
@@ -259,6 +277,8 @@ public class MainActivity extends AppCompatActivity {
                         })
                         .setNegativeButton(R.string.cancel, (dialog, which) -> {
                         })
+
+
                         .create();
             default:
                 return null;
