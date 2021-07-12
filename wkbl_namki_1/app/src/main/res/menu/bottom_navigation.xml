@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/action_Media"
+        android:enabled="true"
+        android:title="오늘의 일정"/>
+<!--        android:icon="@drawable/ic_check_black_24dp"-->
+
+    <item
+        android:id="@+id/action_Game"
+        android:enabled="true"
+        android:title="일정 추가"/>
+
+    <item
+        android:id="@+id/action_Ticket"
+        android:enabled="true"
+        android:title="설정"/>
+    <item
+        android:id="@+id/action_Stats"
+        android:enabled="true"
+        android:title="설정"/>
+    <item
+        android:id="@+id/action_Menu"
+        android:enabled="true"
+        android:title="설정"/>
+
+</menu>
