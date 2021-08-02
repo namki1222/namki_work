@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_MEDIA"
+        android:icon="@drawable/menu_selector_color_1"
+        android:title="MEDIA"/>
+
+    <item
+        android:id="@+id/action_GAME"
+        android:enabled="true"
+        android:icon="@drawable/menu_selector_color_2"
+        android:title="GAME"/>
+
+    <item
+        android:id="@+id/action_TICKET"
+        android:enabled="true"
+        android:icon="@drawable/ticket"
+        android:title="TICKET"/>
+    <item
+        android:id="@+id/action_STATS"
+        android:icon="@drawable/menu_selector_color_3"
+        android:title="STATS"/>
+
+    <item
+        android:id="@+id/action_MENU"
+        android:enabled="true"
+        android:icon="@drawable/menu_selector_color"
+        android:title="MENU"/>
+
+</menu>
